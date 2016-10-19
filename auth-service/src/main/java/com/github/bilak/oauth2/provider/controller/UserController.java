@@ -3,6 +3,7 @@ package com.github.bilak.oauth2.provider.controller;
 import com.github.bilak.oauth2.provider.C;
 import com.github.bilak.oauth2.provider.controller.schema.GetUserResponse;
 import com.github.bilak.oauth2.provider.persistence.jpa.repository.AccessorRepository;
+import com.github.bilak.oauth2.provider.security.AccessorAuthenticationToken;
 import com.github.bilak.oauth2.provider.security.AccessorUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -42,11 +43,7 @@ public class UserController {
 				OAuth2Authentication oAuth2Authentication = (OAuth2Authentication) principal;
 				if (!oAuth2Authentication.isClientOnly()) {
 					if (oAuth2Authentication.getPrincipal().getClass().isAssignableFrom(AccessorUserDetails.class)) {
-						AccessorUserDetails user = (AccessorUserDetails) oAuth2Authentication.getPrincipal();
-						map.put(C.User.ACCOUNT_ID, user.getAccountId());
-						map.put(C.User.EMAIL, user.getEmail());
-						map.put(C.User.FIRST_NAME, user.getFirstName());
-						map.put(C.User.SURNAME, user.getSurname());
+						return convertAuthentication((AccessorUserDetails) oAuth2Authentication.getPrincipal());
 					} else {
 						throw new RuntimeException("Which kind of authentication is used?");
 					}
@@ -54,10 +51,27 @@ public class UserController {
 					map.put("name", principal.getName());
 					map.put("client", "true");
 				}
+			} else if (principal.getClass().isAssignableFrom(AccessorAuthenticationToken.class)) {
+				AccessorAuthenticationToken accessorToken = (AccessorAuthenticationToken) principal;
+				if (accessorToken.getPrincipal().getClass().isAssignableFrom(AccessorUserDetails.class)) {
+					return convertAuthentication((AccessorUserDetails) accessorToken.getPrincipal());
+				}
+
 			} else {
 				map.put("name", principal.getName());
 			}
 		}
+		return map;
+	}
+
+	private Map<String, String> convertAuthentication(AccessorUserDetails userDetails) {
+		Map<String, String> map = new LinkedHashMap<>();
+		map.put(C.User.ID, userDetails.getId());
+		map.put(C.User.ACCOUNT_ID, userDetails.getAccountId());
+		map.put(C.User.EMAIL, userDetails.getEmail());
+		map.put(C.User.FIRST_NAME, userDetails.getFirstName());
+		map.put(C.User.SURNAME, userDetails.getSurname());
+
 		return map;
 	}
 
