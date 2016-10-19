@@ -34,7 +34,7 @@ public class AccessorUserDetails implements UserDetails, Serializable {
 		this(accessor.getId(),
 				accessor.getAccountId(),
 				accessor.getEmail(),
-				null,
+				accessor.getPassword(),
 				accessor.getEmail(),
 				new HashSet<>(AuthorityUtils.commaSeparatedStringToAuthorityList(accessor.getRole())),
 				true,
