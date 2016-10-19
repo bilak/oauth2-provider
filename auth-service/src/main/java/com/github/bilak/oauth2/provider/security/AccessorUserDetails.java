@@ -41,6 +41,8 @@ public class AccessorUserDetails implements UserDetails, Serializable {
 				!accessor.getLocked(),
 				true,
 				accessor.getEnabled());
+		this.surname = accessor.getSurname();
+		this.firstName = accessor.getFirstName();
 	}
 
 	public AccessorUserDetails(String id, String accountId, String email, String password, String username,
@@ -108,8 +110,18 @@ public class AccessorUserDetails implements UserDetails, Serializable {
 		return firstName;
 	}
 
+	public AccessorUserDetails setFirstName(String firstName) {
+		this.firstName = firstName;
+		return this;
+	}
+
 	public String getSurname() {
 		return surname;
+	}
+
+	public AccessorUserDetails setSurname(String surname) {
+		this.surname = surname;
+		return this;
 	}
 
 	@Override

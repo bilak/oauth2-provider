@@ -61,8 +61,9 @@ public class AccessorReAuthenticationProvider implements AuthenticationProvider 
 					true,
 					!user.getLocked(),
 					true,
-					user.getEnabled()
-			);
+					user.getEnabled())
+					.setFirstName(user.getFirstName())
+					.setSurname(user.getSurname());
 			return authenticate(userDetails);
 		} else {
 			throw new BadCredentialsException("Bad credentials");
