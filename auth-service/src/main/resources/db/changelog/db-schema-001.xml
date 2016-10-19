@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+
+    <changeSet id="e4cd2a36-6f44-4b1b-a308-0149b32dd71b" author="lvasek">
+        <createTable tableName="accessor">
+            <column name="id" type="VARCHAR(36)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_accessor"/>
+            </column>
+            <column name="account_id" type="VARCHAR(36)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="surname" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="locked" type="java.sql.Types.INTEGER"/>
+            <column name="enabled" type="java.sql.Types.INTEGER"/>
+            <column name="role" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- SCHEMA FOR SPRINGS OAUTH2
+    <changeSet id="82f24800-752b-4003-9272-190ef1745e06" author="lvasek">
+        <createTable tableName="oauth_client_details">
+            <column name="client_id" type="VARCHAR(255)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_oauth_client_details"/>
+            </column>
+            <column name="resource_ids" type="VARCHAR(255)"/>
+            <column name="client_secret" type="VARCHAR(255)"/>
+            <column name="scope" type="VARCHAR(255)"/>
+            <column name="authorized_grant_types" type="VARCHAR(255)"/>
+            <column name="web_server_redirect_uri" type="VARCHAR(255)"/>
+            <column name="authorities" type="VARCHAR(255)"/>
+            <column name="access_token_validity" type="java.sql.Types.INTEGER"/>
+            <column name="refresh_token_validity" type="java.sql.Types.INTEGER"/>
+            <column name="additional_information" type="VARCHAR(255)"/>
+            <column name="autoapprove" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="33ce19b0-d733-4062-a28d-b64d05217061" author="lvasek">
+        <createTable tableName="oauth_client_token">
+            <column name="token_id" type="VARCHAR(255)"/>
+            <column name="token" type="BLOB"/>
+            <column name="authentication_id" type="VARCHAR(255)"/>
+            <column name="user_name" type="VARCHAR(255)"/>
+            <column name="client_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1323da31-ab92-469a-9ca1-5e981635cd2a" author="lvasek">
+        <createTable tableName="oauth_access_token">
+            <column name="token_id" type="VARCHAR(255)"/>
+            <column name="token" type="BLOB"/>
+            <column name="authentication_id" type="VARCHAR(255)"/>
+            <column name="user_name" type="VARCHAR(255)"/>
+            <column name="client_id" type="VARCHAR(255)"/>
+            <column name="authentication" type="BLOB"/>
+            <column name="refresh_token" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="246e82ee-c0a6-4281-adc9-ba360a1f6042" author="lvasek">
+        <createTable tableName="oauth_refresh_token">
+            <column name="token_id" type="VARCHAR(255)"/>
+            <column name="token" type="BLOB"/>
+            <column name="authentication" type="BLOB"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="ee8e54d9-9226-4553-8c3e-954d0d98a3ff" author="lvasek">
+        <createTable tableName="oauth_code">
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="authentication" type="BLOB"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="65a9fd12-c44e-4c44-8ae9-7937f4b912d5" author="lvasek">
+        <createTable tableName="oauth_approvals">
+            <column name="user_id" type="VARCHAR(255)"/>
+            <column name="client_id" type="VARCHAR(255)"/>
+            <column name="scope" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(10)"/>
+            <column name="expires_at" type="java.sql.Types.TIMESTAMP"/>
+            <column name="last_modified_at" type="java.sql.Types.TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    -->
+
+</databaseChangeLog>

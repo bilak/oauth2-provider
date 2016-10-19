@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+
+    <changeSet id="36e570be-d696-4962-a8c4-f382d921704c" author="lvasek">
+        <insert tableName="accessor">
+            <column name="id" value="385ef3c3-6810-4350-9771-0f7d8112d546"/>
+            <column name="account_id" value="9c46419d-aae6-4297-8a9b-801c5820baab"/>
+            <column name="email" value="lvasek@domain.com"/>
+            <column name="first_name" value="Lukas"/>
+            <column name="surname" value="Vasek"/>
+            <column name="password" value="$2a$10$hlIX4tLBSGqMxj09.FYaOOpkWvExCyHgPyYtxepLNf8Xbnu.eSPx6"/> <!-- password -->
+            <column name="locked" value="0"/>
+            <column name="enabled" value="1"/>
+            <column name="role" value="ADMIN"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="ccef9499-6555-4c13-ab75-498afb6a9f72" author="lvasek">
+        <insert tableName="accessor">
+            <column name="id" value="906d7631-581c-44ce-b71b-a2331f5b58ec"/>
+            <column name="account_id" value="83f846f4-8386-41ba-8b83-f30e9968a74e"/>
+            <column name="email" value="jnovak@domain.com"/>
+            <column name="first_name" value="Jan"/>
+            <column name="surname" value="Novak"/>
+            <column name="password" value="$2a$10$hlIX4tLBSGqMxj09.FYaOOpkWvExCyHgPyYtxepLNf8Xbnu.eSPx6"/> <!-- password -->
+            <column name="locked" value="0"/>
+            <column name="enabled" value="1"/>
+            <column name="role" value="USER"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="deea546c-5b0b-4500-9a81-d3892a2c4b42" author="lvasek">
+        <insert tableName="accessor">
+            <column name="id" value="7aa90f72-12c8-4a2f-88c5-059d54eef970"/>
+            <column name="account_id" value="280d18e2-9bb9-4d63-9557-ea04949d0f65"/>
+            <column name="email" value="jdoe@domain.com"/>
+            <column name="first_name" value="John"/>
+            <column name="surname" value="Doe"/>
+            <column name="password" value="$2a$10$hlIX4tLBSGqMxj09.FYaOOpkWvExCyHgPyYtxepLNf8Xbnu.eSPx6"/> <!-- password -->
+            <column name="locked" value="1"/>
+            <column name="enabled" value="0"/>
+            <column name="role" value="USER"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

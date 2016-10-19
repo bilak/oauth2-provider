@@ -1,0 +1,51 @@
+server:
+  port: 9090
+
+spring:
+  jackson:
+    serialization:
+      indent_output: true
+      write-dates-as-timestamps: false
+  datasource:
+    #url: ${AUTH_SERVICE_DB_URL:jdbc:h2:~/h2db/authorization-service;DB_CLOSE_ON_EXIT=FALSE}
+    url: ${AUTH_SERVICE_DB_URL:jdbc:h2:tcp://localhost:9091/~/authorization-service}
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    show-sql: true
+    database-platform: H2
+    hibernate:
+      ddl-auto: none
+  h2:
+    tcp:
+      port: 9091
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
+logging:
+  level.org.springframework.security: DEBUG
+
+
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:9090/oauth/token
+      userAuthorizationUri: http://localhost:9090/oauth/authorize
+      client-id: demo
+      client-secret: demo
+      #scope: read, write
+    resource:
+      token-info-uri: http://localhost:9090/oauth/check_token
+      user-info-uri: http://localhost:9090/users/me
+
+liquibase:
+  change-log: classpath:db/changelog/db-changelog-master.xml
+  enabled: true
+  drop-first: true
+
+
